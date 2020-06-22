@@ -10,6 +10,7 @@
 
     <properties>
         <selenium-java.version>3.141.59</selenium-java.version>
+        <testng.version>7.1.0</testng.version>
     </properties>
 
 
@@ -20,6 +21,15 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
