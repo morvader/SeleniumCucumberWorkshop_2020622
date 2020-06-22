@@ -1,5 +1,6 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class SeleniumInit {
@@ -9,7 +10,12 @@ public class SeleniumInit {
         System.setProperty("webdriver.gecko.driver", "./drivers/geckodriver.exe");
 
 
-        WebDriver driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless", "--disable-gpu","--ignore-certificate-errors");
+
+        WebDriver driver = new ChromeDriver(options);
+
         //WebDriver driver = new FirefoxDriver();
 
         //driver.manage().window().setSize(new Dimension(300,300));
