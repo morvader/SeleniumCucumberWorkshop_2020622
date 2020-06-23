@@ -16,8 +16,6 @@ public class LoginTest {
     WebDriver driver;
     LoginPage loginPage;
 
-    String URL = "https://the-internet.herokuapp.com/login";
-
     @BeforeClass
     public static void setUpClass() {
         System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
@@ -26,9 +24,9 @@ public class LoginTest {
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
-        driver.get(URL);
-
         loginPage = new LoginPage(driver);
+
+        loginPage.navigateTo();
     }
 
     @AfterMethod
