@@ -7,12 +7,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.TheInternet.LoginPage;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LoginTest {
     WebDriver driver;
+    LoginPage loginPage;
+
     String URL = "https://the-internet.herokuapp.com/login";
 
     @BeforeClass
@@ -24,6 +27,8 @@ public class LoginTest {
     public void setUp() {
         driver = new ChromeDriver();
         driver.get(URL);
+
+        loginPage = new LoginPage(driver);
     }
 
     @AfterMethod
@@ -33,17 +38,13 @@ public class LoginTest {
 
     @Test
     public void credencialesIncorrectas_MensajeUsuarioIvalido() {
-
         String usuarioIncorrecto = "fakeUser";
         String passwordIncorrecto = "fakePass";
         String mensajeEsperado = "Your username is invalid!";
 
-        driver.findElement(By.id("username")).sendKeys(usuarioIncorrecto);
-        driver.findElement(By.id("password")).sendKeys(passwordIncorrecto);
-
-        driver.findElement(By.cssSelector("#login > button")).click();
-
-        String mensaje = driver.findElement(By.id("flash")).getText();
+        String mensaje = loginPage
+                .loginIncorrecto(usuarioIncorrecto,passwordIncorrecto)
+                .getMensaje();
 
         assertTrue(driver.getCurrentUrl().endsWith("login"));
 
@@ -58,13 +59,9 @@ public class LoginTest {
         String passwordCorrecto = "SuperSecretPassword!";
         String mensajeEsperado = "You logged into a secure area!";
 
-
-        driver.findElement(By.id("username")).sendKeys(usuarioCorrecto);
-        driver.findElement(By.id("password")).sendKeys(passwordCorrecto);
-
-        driver.findElement(By.cssSelector("#login > button")).click();
-
-        String mensaje = driver.findElement(By.id("flash")).getText();
+        String mensaje = loginPage
+                .loginCorrecto(usuarioCorrecto,passwordCorrecto)
+                .getMensaje();
 
         assertTrue(driver.getCurrentUrl().endsWith("secure"));
 
