@@ -1,8 +1,6 @@
 package pages.TheInternet;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,10 +26,16 @@ public class DynamicControlPage {
     }
 
     public String getMensaje() {
-        //WebDriverWait wait = new WebDriverWait(this.driver, 5);
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(mensaje));
+        WebDriverWait wait = new WebDriverWait(this.driver, 10);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(mensaje));
 
         return driver.findElement(mensaje).getText();
+    }
+
+    public void waitCheckBoxInvisible() {
+        WebDriverWait wait = new WebDriverWait(this.driver, 10);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(checkbox));
     }
 
     public boolean isCheckBoxPresent() {

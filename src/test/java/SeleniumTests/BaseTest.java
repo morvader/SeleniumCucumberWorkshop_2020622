@@ -30,7 +30,7 @@ public class BaseTest {
     }
 
 
-    public static void takeScreenshot(WebDriver driver, String destinationPath, String testName) throws IOException {
+    public void takeScreenshot(WebDriver driver, String destinationPath, String testName) throws IOException {
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File(destinationPath, testName + ".png"));
     }

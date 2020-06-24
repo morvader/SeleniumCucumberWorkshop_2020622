@@ -9,8 +9,7 @@ import org.testng.annotations.Test;
 import pages.TheInternet.DynamicControlPage;
 import pages.TheInternet.LoginPage;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class DynamicControlTest extends BaseTest {
     DynamicControlPage dynamicControlPage;
@@ -27,8 +26,10 @@ public class DynamicControlTest extends BaseTest {
 
         dynamicControlPage.clickButton();
 
+        String mensaje = dynamicControlPage.getMensaje();
+        assertEquals(mensaje, "It's gone!");
 
-        assertFalse(dynamicControlPage.isCheckBoxPresent(), "Al hacer click en el botón, el checkbox debería desaparecer");
+        assertFalse(dynamicControlPage.isCheckBoxPresent(), "El checkbox está presente después de pulsar el botón que lo hace desparacer");
 
     }
 }
