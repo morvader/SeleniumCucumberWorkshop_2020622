@@ -12,14 +12,9 @@ import pages.TheInternet.LoginPage;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class LoginTest {
-    WebDriver driver;
-    LoginPage loginPage;
+public class LoginTest extends BaseTest{
 
-    @BeforeClass
-    public static void setUpClass() {
-        System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-    }
+    LoginPage loginPage;
 
     @BeforeMethod
     public void setUp() {
@@ -29,10 +24,6 @@ public class LoginTest {
         loginPage.navigateTo();
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.close();
-    }
 
     @Test
     public void credencialesIncorrectas_MensajeUsuarioIvalido() {
