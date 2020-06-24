@@ -27,7 +27,6 @@ public class DynamicControlPage {
 
     public String getMensaje() {
         WebDriverWait wait = new WebDriverWait(this.driver, 10);
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(mensaje));
 
         return driver.findElement(mensaje).getText();
