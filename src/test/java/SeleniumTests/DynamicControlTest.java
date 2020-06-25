@@ -20,7 +20,7 @@ public class DynamicControlTest extends BaseTest {
         dynamicControlPage.navigateTo();
     }
 
-    @Test
+    @Test()
     public void checkBoxApareceYDesaparece() {
         assertTrue(dynamicControlPage.isCheckBoxPresent(), "Al inciar debería mostrarse el checkbox");
 
